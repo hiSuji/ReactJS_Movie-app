@@ -1,68 +1,130 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## [ ReactJS로 Movie app 만들기]
 
-## Available Scripts
+- ‘Nomadcoders - ReactJs로 웹 서비스 만들기’ 강의를 토대로 공부한 내용을 정리하였습니다.
 
-In the project directory, you can run:
+- 강의와 다르게 변경한 부분은 다음과 같습니다.
 
-### `npm start`
+  - Class 기반 컴포넌트가 아닌 Functional 컴포넌트를 사용하였습니다.
 
-Runs the app in the development mode.<br>
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+  - 클래스 컴포넌트의 Component LifeCycle API를 함수 컴포넌트에서도 사용하기 위해 React Hooks을 이용하였습니다.
 
-The page will reload if you make edits.<br>
-You will also see any lint errors in the console.
+    
 
-### `npm test`
+1. #### ReactJS 장점
 
-Launches the test runner in the interactive watch mode.<br>
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+   - **Just JavaScript**
+     
+     - No framework to learn
+   - **Composition**
+     
+     - 요소별, 컴포넌트별로 나눠서 작업 가능
+   - **Unidirectianal Dataflow**
+     - 데이터는 항상 일정한 장소에 위치해있고, 그 장소에서만 변경 가능
+     - If the state chages, the UI updates
+     
+     
 
-### `npm run build`
+2. #### PROPS(=properties)
 
-Builds the app for production to the `build` folder.<br>
-It correctly bundles React in production mode and optimizes the build for the best performance.
+   - props란 상위 컴포넌트에 저장한 데이터로, 
+     이 데이터를 하위 컴포넌트로 전달하여 사용합니다.
 
-The build is minified and the filenames include the hashes.<br>
-Your app is ready to be deployed!
+   - 값 변경ⅹ (단, 상위 컴포넌트에서 변경하는 것은 가능)
+     
+   - 전달된 props 확인 방법
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+     - 클래스 컴포넌트
 
-### `npm run eject`
+     - ```
+       class App extends React.Component {
+           render() {
+               return <h1>Hello {this.props.title}</h1>;
+           }
+       }
+       ```
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+     - 함수 컴포넌트
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+     - ```
+       function App(props) {
+           return(<h1>Hello {props.title}</h1>);
+       }
+       ```
 
-Instead, it will copy all the configuration files and the transitive dependencies (Webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+   
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+3. #### PropTypes
 
-## Learn More
+   - props 값 검증
+   - 상위 컴포넌트에서 넘어오는 데이터의 종류와 데이터 유무 확인 가능
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+   ```
+   function Movie(props) {
+       return (
+           <div>
+               <MoviePoster poster={props.poster}/>
+               <h1 >
+                   {props.title}
+               </h1>
+           </div>
+       );
+   }
+   
+   Movie.propTypes = {
+       title: PropTypes.string.isRequired,
+       poster: PropTypes.string.isRequired
+   }
+   ```
 
-To learn React, check out the [React documentation](https://reactjs.org/).
 
-### Code Splitting
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
+4. #### State
 
-### Analyzing the Bundle Size
+   - props와 비슷하지만 다른 점은 값 변경이 가능합니다.
+- setState(updater[, callback]) 이용
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
 
-### Making a Progressive Web App
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
+5. #### The Component Lifecycle
 
-### Advanced Configuration
+   - 라이프 사이클은 컴포넌트의 Initialization, Mounting, Update, Unmounting 의 일련의 과정을 뜻합니다.
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
+     ![image](https://user-images.githubusercontent.com/47530310/61043818-280fc700-a412-11e9-8a45-f770ead03e5e.png)
 
-### Deployment
+> *출처: http://projects.wojtekmaj.pl/react-lifecycle-methods-diagram/*
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
 
-### `npm run build` fails to minify
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+6. #### React Hooks
+
+   - class 없이 state와 lifecycle method 사용이 가능합니다.
+   - useStste, useEffect 이용
+   
+     - useEffect는 componentDidMount, componentDidUpdate, componentWillUnmount 대체한다.
+   
+   - ```
+     import React, { useState, useEffect } from 'react';
+     ```
+   
+   - ```
+     const [greeting, setGreeting] = useState('Hello!');
+          
+         useEffect(() => {
+             setTimeout(() => {
+                 setGreeting('something')
+             }, 2000);
+         });
+     ```
+     
+     - useEffect(fn, [ ])
+              - 빈 배열을 매개변수로 전달하면 처음 렌더링 때에만 fn이 호출됩니다.
+                    
+   
+7. #### asycn와 await
+
+   - **async(=asynchronous, 비동기)**
+     
+     - 이전 작업이 끝날 때까지 기다리지 않고 실행되며 Promise를 반환합니다.
+   - **await**
+     - Promise 수행 결과의 성공 여부에 상관없이 끝나기만을 기다립니다.
+     - async 키워드를 사용해야지만 await를 사용할 수 있습니다.
