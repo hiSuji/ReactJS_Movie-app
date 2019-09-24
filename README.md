@@ -128,3 +128,21 @@
    - **await**
      - Promise 수행 결과의 성공 여부에 상관없이 끝나기만을 기다립니다.
      - async 키워드를 사용해야지만 await를 사용할 수 있습니다.
+     
+     
+
+8. #### css 클래스 적용하기
+   - ```
+render() {
+   	 	return <span className="menu navigation-menu">Menu</span>
+}
+     ```
+     - class는 자바스크립트 키워드이기에 JSX에서는 className을 사용합니다.
+       - JSX
+         - React 컴포넌트를 만들 때 사용하는 언어로 JavaScript를 학장한 문법입니다.
+
+------
+
+※ 완성된 화면
+     ![image](https://user-images.githubusercontent.com/47530310/65488115-5403fa00-dee3-11e9-8f63-e61faf4d31d3.PNG)
+
