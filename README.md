@@ -132,11 +132,13 @@
      
 
 8. #### css 클래스 적용하기
-   - ```
-render() {
-   	 	return <span className="menu navigation-menu">Menu</span>
-}
-     ```
+
+     - ```
+       render() {
+     	 	 	return <span className="menu navigation-menu">Menu</span>
+    }
+      ```
+
      - class는 자바스크립트 키워드이기에 JSX에서는 className을 사용합니다.
        - JSX
          - React 컴포넌트를 만들 때 사용하는 언어로 JavaScript를 학장한 문법입니다.
