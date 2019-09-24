@@ -144,5 +144,6 @@ render() {
 ------
 
 ※ 완성된 화면
-     ![image](https://user-images.githubusercontent.com/47530310/65488115-5403fa00-dee3-11e9-8f63-e61faf4d31d3.PNG)
+
+​     ![image](https://user-images.githubusercontent.com/47530310/65488115-5403fa00-dee3-11e9-8f63-e61faf4d31d3.PNG)
 
