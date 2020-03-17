@@ -4,6 +4,7 @@
   "private": true,
   "dependencies": {
     "handlebars": "4.7.3",
+    "minimist": "1.2.5",
     "react": "^16.13.0",
     "react-dom": "^16.13.0",
     "react-scripts": "3.4.0",
