@@ -149,3 +149,25 @@
 
 ​     ![image](https://user-images.githubusercontent.com/47530310/65488115-5403fa00-dee3-11e9-8f63-e61faf4d31d3.PNG)
 
+
+
+------
+
+**Structure**
+
+```
+.
+|-- node_modules
+|-- package.json
+|-- public
+|-- src
+|   |-- App.css
+|   |-- App.js
+|   |-- App.test.js
+|   |-- Movie.css
+|   |-- Movie.js
+|   |-- index.css
+|   `-- index.js
+`-- yarn.lock
+```
+
